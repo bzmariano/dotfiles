@@ -2,7 +2,7 @@
 
 tmux new-session -s CODING -d -x "$(tput cols)" -y "$(tput lines)"
 
-tmux split-window -p 20
+tmux split-window -h -p 60
 
 tmux select-pane -U
 
