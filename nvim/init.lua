@@ -512,7 +512,6 @@ require("lazy").setup({
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
-				javascript = { "prettier" },
 				typescript = { "prettier" },
 				html = { "prettier" },
 				css = { "prettier" },
@@ -651,7 +650,6 @@ require("lazy").setup({
 			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
-
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufRead", "BufWrite" },
