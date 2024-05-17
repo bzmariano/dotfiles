@@ -1,7 +1,3 @@
--------------------------------------------------------------------------------------------------------------------
----- OPTIONS -------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------
-
 -- leader key to space
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -28,6 +24,9 @@ vim.opt.mouse = "a"
 vim.opt.swapfile = false
 vim.opt.backup = false
 
+-- Enable/disable diagnostic virtual text
+vim.diagnostic.config({ virtual_text = false })
+
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
 
@@ -35,8 +34,7 @@ vim.opt.showmode = false
 vim.opt.laststatus = 0
 
 -- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
+-- See `:help 'clipboard'`
 vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
@@ -189,6 +187,54 @@ require("lazy").setup({
 				changedelete = { text = "~" },
 			},
 		},
+	},
+
+	-- zen mode
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+			window = {
+				backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+				-- height and width can be:
+				-- * an absolute number of cells when > 1
+				-- * a percentage of the width / height of the editor when <= 1
+				-- * a function that returns the width or the height
+				width = 100, -- width of the Zen window
+				height = 1, -- height of the Zen window
+				-- by default, no options are changed for the Zen window
+				-- uncomment any of the options below, or add other vim.wo options you want to apply
+				options = {
+					-- signcolumn = "no", -- disable signcolumn
+					-- number = false, -- disable number column
+					-- relativenumber = false, -- disable relative numbers
+					-- cursorline = false, -- disable cursorline
+					-- cursorcolumn = false, -- disable cursor column
+					-- foldcolumn = "0", -- disable fold column
+					-- list = false, -- disable whitespace characters
+				},
+			},
+			plugins = {
+				-- disable some global vim options (vim.o...)
+				-- comment the lines to not apply the options
+				options = {
+					enabled = true,
+					ruler = false, -- disables the ruler text in the cmd line area
+					showcmd = false, -- disables the command in the last line of the screen
+					-- you may turn on/off statusline in zen mode by setting 'laststatus'
+					-- statusline will be shown only if 'laststatus' == 3
+					laststatus = 0, -- turn off the statusline in zen mode
+				},
+				twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+				gitsigns = { enabled = false }, -- disables git signs
+				tmux = { enabled = false }, -- disables the tmux statusline
+			},
+			-- callback where you can add custom code when the Zen window opens
+			on_open = function(win) end,
+			-- callback where you can add custom code when the Zen window closes
+			on_close = function() end,
+		},
+
+		vim.keymap.set("n", "<leader>z", ":ZenMode<CR>", { desc = "Toggle Zen mode" }),
 	},
 
 	-- Useful plugin to show you pending keybinds.
@@ -557,7 +603,7 @@ require("lazy").setup({
 			-- See `:help cmp`
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
-			luasnip.config.setup({})
+			luasnip.config.setup({ history = false, updateevent = "TextChanged,TextChangedI" })
 
 			cmp.setup({
 				snippet = {
@@ -565,7 +611,7 @@ require("lazy").setup({
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				completion = { completeopt = "menu,menuone,noinsert" },
+				completion = { completeopt = "menu,menuone,preview,noselect" },
 
 				-- For an understanding of why these mappings were
 				-- chosen, you will need to read `:help ins-completion`
@@ -591,12 +637,12 @@ require("lazy").setup({
 					--
 					-- <c-l> will move you to the right of each of the expansion locations.
 					-- <c-h> is similar, except moving you backwards.
-					["<C-l>"] = cmp.mapping(function()
+					["<C-k>"] = cmp.mapping(function()
 						if luasnip.expand_or_locally_jumpable() then
 							luasnip.expand_or_jump()
 						end
 					end, { "i", "s" }),
-					["<C-h>"] = cmp.mapping(function()
+					["<C-j>"] = cmp.mapping(function()
 						if luasnip.locally_jumpable(-1) then
 							luasnip.jump(-1)
 						end

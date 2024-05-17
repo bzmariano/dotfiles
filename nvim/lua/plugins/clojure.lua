@@ -22,11 +22,12 @@ local vim_jack_in = {
 
 local conjure = {
 	"Olical/conjure",
-	ft = { "list", "edn", "clj", "cljc" },
 	lazy = false,
+	ft = { "lisp", "edn", "clj", "cljc" },
 	dependencies = {
 		{
 			"PaterJason/cmp-conjure",
+			ft = { "lisp", "edn", "clj", "cljc" },
 			config = function()
 				local cmp = require("cmp")
 				local config = cmp.get_config()
@@ -109,7 +110,7 @@ local conjure = {
 
 return {
 	parinfer,
-	--rainbow_delimiters,
-	vim_jack_in,
+	rainbow_delimiters,
+	--vim_jack_in,
 	conjure,
 }
