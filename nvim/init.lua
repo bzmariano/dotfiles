@@ -665,6 +665,34 @@ require("lazy").setup({
 	-- Highlight todo, notes, etc in comments
 	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
 
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("oil").setup({
+				view_options = {
+					show_hidden = true,
+				},
+				delete_to_trash = true,
+				skip_confirm_for_simple_edits = true,
+				vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }),
+			})
+		end,
+	},
+
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("ibl").setup({
+				-- debounce = 100,
+				indent = { char = "▏" },
+				whitespace = { highlight = { "Whitespace" } },
+				scope = { enabled = false },
+			})
+		end,
+	},
+
 	{ -- Collection of various small independent plugins/modules
 		"echasnovski/mini.nvim",
 		config = function()
@@ -690,7 +718,7 @@ require("lazy").setup({
 			-- Simple and easy tabline.
 			--  You could remove this setup call if you don't like it,
 			--  and try some other tabline plugin
-			require("mini.tabline").setup({ set_vim_settings = true })
+			--require("mini.tabline").setup({ set_vim_settings = true })
 
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim

@@ -8,23 +8,10 @@ local colorbuddy = {
 	lazy = false,
 	priority = 1000,
 	config = function()
-		vim.cmd.colorscheme("bzm")
-	end,
-}
-
-local gruber = {
-	"thimc/gruber-darker.nvim",
-	config = function()
-		require("gruber-darker").setup({
-			transparent = true,
-			underline = false,
-			bold = false,
-		})
-		vim.cmd.colorscheme("gruber-darker")
+		vim.cmd.colorscheme("darky")
 	end,
 }
 
 return {
-	--gruber,
 	colorbuddy,
 }
