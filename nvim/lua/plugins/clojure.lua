@@ -109,8 +109,8 @@ local conjure = {
 }
 
 return {
-	parinfer,
+	--parinfer,
 	--rainbow_delimiters,
 	--vim_jack_in,
-	conjure,
+	--conjure,
 }

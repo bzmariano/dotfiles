@@ -6,9 +6,9 @@ vim.g.maplocalleader = " "
 vim.opt.gcr = "n-v-c-sm:block/blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver50,r-cr-o:hor20"
 
 -- indentation space
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
 -- wrap end of the line
 vim.opt.wrap = true
@@ -686,7 +686,8 @@ require("lazy").setup({
 		config = function()
 			require("ibl").setup({
 				-- debounce = 100,
-				indent = { char = "▏" },
+				-- indent = { char = "▏" },
+				indent = { char = "·" },
 				whitespace = { highlight = { "Whitespace" } },
 				scope = { enabled = false },
 			})
