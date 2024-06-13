@@ -14,8 +14,8 @@ vim.opt.shiftwidth = 4
 vim.opt.wrap = true
 
 -- Make line numbers default
--- vim.opt.number = true
--- vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
@@ -686,8 +686,8 @@ require("lazy").setup({
 		config = function()
 			require("ibl").setup({
 				-- debounce = 100,
-				-- indent = { char = "▏" },
-				indent = { char = "·" },
+				indent = { char = "▏" },
+				-- indent = { char = "·" },
 				whitespace = { highlight = { "Whitespace" } },
 				scope = { enabled = false },
 			})
