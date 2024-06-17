@@ -25,7 +25,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 -- Enable/disable diagnostic virtual text
-vim.diagnostic.config({ virtual_text = false })
+-- vim.diagnostic.config({ virtual_text = false })
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
@@ -71,7 +71,7 @@ vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20
@@ -611,6 +611,7 @@ require("lazy").setup({
 						luasnip.lsp_expand(args.body)
 					end,
 				},
+				--completion = { completeopt = "menu,menuone,preview,noselect" },
 				completion = { completeopt = "menu,menuone,preview,noselect" },
 
 				-- For an understanding of why these mappings were
