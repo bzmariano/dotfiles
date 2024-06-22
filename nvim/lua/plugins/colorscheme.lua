@@ -8,7 +8,7 @@ local colorbuddy = {
 	lazy = false,
 	priority = 1000,
 	config = function()
-		vim.cmd.colorscheme("ziggy")
+		vim.cmd.colorscheme("bzm")
 	end,
 }
 

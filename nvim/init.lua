@@ -686,11 +686,11 @@ require("lazy").setup({
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
 			require("ibl").setup({
-				-- debounce = 100,
+				--debounce = 100,
 				indent = { char = "▏" },
 				-- indent = { char = "·" },
 				whitespace = { highlight = { "Whitespace" } },
-				scope = { enabled = false },
+				--scope = { enabled = true },
 			})
 		end,
 	},
