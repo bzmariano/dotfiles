@@ -471,8 +471,8 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				clangd = { filetypes = { "c", "cpp" } },
-				bashls = { filetypes = { "bash" } },
-				html = { filetypes = { "html", "twig", "hbs", "css" } },
+				-- bashls = { filetypes = { "bash" } },
+				-- html = { filetypes = { "html", "twig", "hbs", "css" } },
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -686,11 +686,11 @@ require("lazy").setup({
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
 			require("ibl").setup({
-				--debounce = 100,
+				debounce = 100,
 				indent = { char = "▏" },
 				-- indent = { char = "·" },
 				whitespace = { highlight = { "Whitespace" } },
-				--scope = { enabled = true },
+				scope = { enabled = false },
 			})
 		end,
 	},
