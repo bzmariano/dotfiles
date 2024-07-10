@@ -66,7 +66,6 @@ local conjure = {
 		})
 	end,
 	init = function()
-		-- nrepl
 		local nrepl = "conjure#client#clojure#nrepl#"
 		vim.g[nrepl .. "connection#auto_repl#enabled"] = false
 		vim.g[nrepl .. "connection#auto_repl#hidden"] = true
@@ -79,18 +78,19 @@ local conjure = {
 		vim.g["conjure#debug"] = false
 		vim.g["conjure#eval#gsubs"] = nil
 		vim.g["conjure#mapping#enable_defaults"] = false
-		-- manual keybinding
-		vim.g["conjure#mapping#log_split"] = "ls"
-		vim.g["conjure#mapping#log_vsplit"] = "lv"
-		vim.g["conjure#mapping#log_buf"] = "lb"
-		vim.g["conjure#mapping#log_toggle"] = "lg"
-		vim.g["conjure#mapping#log_reset_soft"] = "lr"
-		vim.g["conjure#mapping#log_reset_hard"] = "lR"
-		vim.g["conjure#mapping#log_close_visible"] = "lq"
-		vim.g["conjure#mapping#eval_current_form"] = "ee"
-		vim.g["conjure#mapping#eval_root_form"] = "er"
-		vim.g["conjure#mapping#eval_buf"] = "eb"
-		vim.g["conjure#mapping#eval_comment_root_form"] = "ecr"
+
+		local keys = "conjure#mapping"
+		vim.g[keys .. "#log_split"] = "ls"
+		vim.g[keys .. "#log_vsplit"] = "lv"
+		vim.g[keys .. "#log_buf"] = "lb"
+		vim.g[keys .. "#log_toggle"] = "lg"
+		vim.g[keys .. "#log_reset_soft"] = "lr"
+		vim.g[keys .. "#log_reset_hard"] = "lR"
+		vim.g[keys .. "#log_close_visible"] = "lq"
+		vim.g[keys .. "#eval_current_form"] = "ee"
+		vim.g[keys .. "#eval_root_form"] = "er"
+		vim.g[keys .. "#eval_buf"] = "eb"
+		vim.g[keys .. "#eval_comment_root_form"] = "ecr"
 		vim.keymap.set("n", "<leader>ce", "<CMD>ConjureEval *e<CR>", { desc = "[C]onjure eval: *[e]" })
 		vim.keymap.set(
 			"n",

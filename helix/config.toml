@@ -1,0 +1,40 @@
+theme = "onedarker"
+
+[editor]
+bufferline = "multiple"
+line-number = "relative"
+scrolloff = 20
+completion-timeout = 5
+true-color = true
+popup-border = "all"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.indent-guides]
+# character = "▏"
+# character = "·"
+render = false
+skip-levels = 1
+
+[editor.statusline]
+separator = "│"
+center = ["version-control"]
+left = ["mode", "spinner", "file-name" ]
+
+[editor.file-picker]
+hidden = false
+max-depth = 6
+
+[editor.lsp]
+display-inlay-hints = true
+display-messages = true
+
+[keys.normal]
+esc = ["collapse_selection", "keep_primary_selection"]
+backspace = { r = [":config-reload"], o = [":config-open"]}
+X = "extend_line_above"
+C-h = "jump_view_left"
+C-l = "jump_view_right"
+C-k = "jump_view_up"
+C-j = "jump_view_down" 

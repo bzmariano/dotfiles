@@ -172,8 +172,27 @@ require("lazy").setup({
 	-- Navigate between tmux panes with vim keybindings
 	{ "christoomey/vim-tmux-navigator" },
 
-	-- Better netwr use '-' to execuet :Explore
-	{ "tpope/vim-vinegar" },
+	-- Colorscheme
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("tokyonight").setup({
+				style = "night",
+				transparent = true,
+				styles = {
+					keywords = { italic = false },
+					types = { italic = true },
+				},
+			})
+			vim.cmd.colorscheme("tokyonight")
+			-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+			-- vim.cmd("highlight LineNr guibg=NONE ctermbg=NONE")
+			-- vim.cmd("highlight SignColumn guibg=NONE ctermbg=NONE")
+		end,
+	},
 
 	-- Adds git related signs to the gutter, as well as utilities for managing changes
 	{
@@ -470,18 +489,6 @@ require("lazy").setup({
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				clangd = { filetypes = { "c", "cpp" } },
-				-- bashls = { filetypes = { "bash" } },
-				-- html = { filetypes = { "html", "twig", "hbs", "css" } },
-				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`tsserver`) will work just fine
-				-- tsserver = {},
-				--
-
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes { 'lua' },
@@ -617,7 +624,7 @@ require("lazy").setup({
 				-- For an understanding of why these mappings were
 				-- chosen, you will need to read `:help ins-completion`
 				mapping = cmp.mapping.preset.insert({
-					["<C-n>"] = cmp.mapping.select_next_item(),
+					-- ["<C-n>"] = cmp.mapping.select_next_item(),
 					["<C-p>"] = cmp.mapping.select_prev_item(),
 
 					-- Accept ([y]es) the completion.
@@ -681,20 +688,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("ibl").setup({
-				debounce = 100,
-				indent = { char = "▏" },
-				-- indent = { char = "·" },
-				whitespace = { highlight = { "Whitespace" } },
-				scope = { enabled = false },
-			})
-		end,
-	},
-
 	{ -- Collection of various small independent plugins/modules
 		"echasnovski/mini.nvim",
 		config = function()
