@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- guicursor config
-vim.opt.gcr = "n-v-c-sm:block/blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver50,r-cr-o:hor20"
+vim.opt.gcr = "n-v-c-sm:block/blinkwait700-blinkoff400-blinkon250,i-ci-ve:hor50,r-cr-o:hor20"
 
 -- indentation space
 vim.opt.tabstop = 4
@@ -172,42 +172,6 @@ require("lazy").setup({
 	-- Navigate between tmux panes with vim keybindings
 	{ "christoomey/vim-tmux-navigator" },
 
-	-- Colorscheme
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("tokyonight").setup({
-				style = "night",
-				transparent = false,
-				styles = {
-					keywords = { italic = false },
-					types = { italic = true },
-				},
-				on_highlights = function(hl, c)
-					hl.Comment = {
-						bg = nil,
-						fg = c.yellow,
-					}
-					hl.TelescopePromptBorder = {
-						bg = c.bg_dark,
-						fg = c.blue1,
-					}
-					hl.TelescopePromptTitle = {
-						bg = c.bg_dark,
-						fg = c.blue1,
-					}
-				end,
-			})
-			vim.cmd.colorscheme("tokyonight")
-			-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-			-- vim.cmd("highlight LineNr guibg=NONE ctermbg=NONE")
-			-- vim.cmd("highlight SignColumn guibg=NONE ctermbg=NONE")
-		end,
-	},
-
 	-- Adds git related signs to the gutter, as well as utilities for managing changes
 	{
 		"lewis6991/gitsigns.nvim",
@@ -220,53 +184,6 @@ require("lazy").setup({
 				changedelete = { text = "~" },
 			},
 		},
-	},
-
-	{
-		"folke/zen-mode.nvim",
-		opts = {
-			window = {
-				backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
-				-- height and width can be:
-				-- * an absolute number of cells when > 1
-				-- * a percentage of the width / height of the editor when <= 1
-				-- * a function that returns the width or the height
-				width = 100, -- width of the Zen window
-				height = 1, -- height of the Zen window
-				-- by default, no options are changed for the Zen window
-				-- uncomment any of the options below, or add other vim.wo options you want to apply
-				options = {
-					-- signcolumn = "no", -- disable signcolumn
-					-- number = false, -- disable number column
-					-- relativenumber = false, -- disable relative numbers
-					-- cursorline = false, -- disable cursorline
-					-- cursorcolumn = false, -- disable cursor column
-					-- foldcolumn = "0", -- disable fold column
-					-- list = false, -- disable whitespace characters
-				},
-			},
-			plugins = {
-				-- disable some global vim options (vim.o...)
-				-- comment the lines to not apply the options
-				options = {
-					enabled = true,
-					ruler = false, -- disables the ruler text in the cmd line area
-					showcmd = false, -- disables the command in the last line of the screen
-					-- you may turn on/off statusline in zen mode by setting 'laststatus'
-					-- statusline will be shown only if 'laststatus' == 3
-					laststatus = 0, -- turn off the statusline in zen mode
-				},
-				twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
-				gitsigns = { enabled = false }, -- disables git signs
-				tmux = { enabled = false }, -- disables the tmux statusline
-			},
-			-- callback where you can add custom code when the Zen window opens
-			on_open = function(win) end,
-			-- callback where you can add custom code when the Zen window closes
-			on_close = function() end,
-		},
-
-		vim.keymap.set("n", "<leader>z", ":ZenMode<CR>", { desc = "Toggle Zen mode" }),
 	},
 
 	-- Useful plugin to show you pending keybinds.
@@ -360,7 +277,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
 			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+			-- vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 			vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
@@ -374,7 +291,7 @@ require("lazy").setup({
 					winblend = 0,
 					previewer = false,
 				}))
-			end, { desc = "Fuzzily search [I]n current buffer" })
+			end, { desc = "Fuzzily [S]earch [I]n current buffer" })
 
 			-- Also possible to pass additional configuration options.
 			--  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -702,11 +619,18 @@ require("lazy").setup({
 			})
 		end,
 	},
+
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+	},
+
 	{ -- Collection of various small independent plugins/modules
 		"echasnovski/mini.nvim",
 		config = function()
 			-- Better Around/Inside textobjects
-			--
+
 			-- Examples:
 			--  - va)  - [V]isually select [A]round [)]parenthen
 			--  - yinq - [Y]ank [I]nside [N]ext [']quote
@@ -733,6 +657,7 @@ require("lazy").setup({
 			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
+
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufRead", "BufWrite" },
@@ -756,6 +681,160 @@ require("lazy").setup({
 			--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
 			--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 		end,
+	},
+
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("tokyonight").setup({
+				style = "storm",
+				transparent = true,
+				styles = {
+					keywords = { italic = false },
+					types = { italic = true },
+				},
+				on_highlights = function(hl, c)
+					hl.Comment = {
+						bg = nil,
+						fg = c.yellow,
+					}
+					hl.TelescopeNormal = {
+						bg = nil,
+						fg = c.blue1,
+					}
+					hl.TelescopeBorder = {
+						bg = nil,
+						fg = c.blue1,
+					}
+					hl.TelescopePromptBorder = {
+						bg = nil,
+						fg = c.blue1,
+					}
+					hl.NormalFloat = {
+						bg = nil,
+						fg = c.blue1,
+					}
+					hl.FloatBorder = {
+						bg = nil,
+						fg = c.blue1,
+					}
+					hl.TelescopePromptTitle = {
+						bg = nil,
+						fg = c.blue1,
+					}
+				end,
+			})
+			vim.cmd.colorscheme("tokyonight")
+			-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+			-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+			-- vim.cmd("highlight LineNr guibg=NONE ctermbg=NONE")
+			-- vim.cmd("highlight SignColumn guibg=NONE ctermbg=NONE")
+		end,
+	},
+
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		---@type Flash.Config
+		opts = {},
+		keys = {
+			{
+				"f",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump({
+						search = {
+							mode = function(str)
+								return "\\<" .. str
+							end,
+						},
+					})
+				end,
+				desc = "Flash",
+			},
+			{
+				"S",
+				mode = { "n", "o", "x" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
+			{
+				"r",
+				mode = "o",
+				function()
+					require("flash").remote()
+				end,
+				desc = "Remote Flash",
+			},
+			{
+				"R",
+				mode = { "o", "x" },
+				function()
+					require("flash").treesitter_search()
+				end,
+				desc = "Flash Treesitter Search",
+			},
+			{
+				"<c-s>",
+				mode = { "c" },
+				function()
+					require("flash").toggle()
+				end,
+				desc = "Toggle Flash Search",
+			},
+		},
+	},
+
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+			window = {
+				backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+				-- height and width can be:
+				-- * an absolute number of cells when > 1
+				-- * a percentage of the width / height of the editor when <= 1
+				-- * a function that returns the width or the height
+				width = 100, -- width of the Zen window
+				height = 1, -- height of the Zen window
+				-- by default, no options are changed for the Zen window
+				-- uncomment any of the options below, or add other vim.wo options you want to apply
+				options = {
+					-- signcolumn = "no", -- disable signcolumn
+					-- number = false, -- disable number column
+					-- relativenumber = false, -- disable relative numbers
+					-- cursorline = false, -- disable cursorline
+					-- cursorcolumn = false, -- disable cursor column
+					-- foldcolumn = "0", -- disable fold column
+					-- list = false, -- disable whitespace characters
+				},
+			},
+			plugins = {
+				-- disable some global vim options (vim.o...)
+				-- comment the lines to not apply the options
+				options = {
+					enabled = true,
+					ruler = false, -- disables the ruler text in the cmd line area
+					showcmd = false, -- disables the command in the last line of the screen
+					-- you may turn on/off statusline in zen mode by setting 'laststatus'
+					-- statusline will be shown only if 'laststatus' == 3
+					laststatus = 0, -- turn off the statusline in zen mode
+				},
+				twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+				gitsigns = { enabled = false }, -- disables git signs
+				tmux = { enabled = false }, -- disables the tmux statusline
+			},
+			-- callback where you can add custom code when the Zen window opens
+			on_open = function(win) end,
+			-- callback where you can add custom code when the Zen window closes
+			on_close = function() end,
+		},
+
+		vim.keymap.set("n", "<leader>z", ":ZenMode<CR>", { desc = "Toggle Zen mode" }),
 	},
 
 	{ import = "plugins" },
