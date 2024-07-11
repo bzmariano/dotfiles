@@ -702,7 +702,7 @@ require("lazy").setup({
 					}
 					hl.TelescopeNormal = {
 						bg = nil,
-						fg = c.blue1,
+						fg = c.white,
 					}
 					hl.TelescopeBorder = {
 						bg = nil,
@@ -712,15 +712,15 @@ require("lazy").setup({
 						bg = nil,
 						fg = c.blue1,
 					}
+					hl.TelescopePromptTitle = {
+						bg = nil,
+						fg = c.blue1,
+					}
 					hl.NormalFloat = {
 						bg = nil,
 						fg = c.blue1,
 					}
 					hl.FloatBorder = {
-						bg = nil,
-						fg = c.blue1,
-					}
-					hl.TelescopePromptTitle = {
 						bg = nil,
 						fg = c.blue1,
 					}
