@@ -187,10 +187,14 @@ require("lazy").setup({
 				},
 				on_highlights = function(hl, c)
 					hl.Comment = {
-						bg = c.bg_dark,
+						bg = nil,
 						fg = c.yellow,
 					}
 					hl.TelescopePromptBorder = {
+						bg = c.bg_dark,
+						fg = c.blue1,
+					}
+					hl.TelescopePromptTitle = {
 						bg = c.bg_dark,
 						fg = c.blue1,
 					}
@@ -634,12 +638,13 @@ require("lazy").setup({
 				-- chosen, you will need to read `:help ins-completion`
 				mapping = cmp.mapping.preset.insert({
 					-- ["<C-n>"] = cmp.mapping.select_next_item(),
+					["<TAB>"] = cmp.mapping.select_next_item(),
 					["<C-p>"] = cmp.mapping.select_prev_item(),
 
 					-- Accept ([y]es) the completion.
 					--  This will auto-import if your LSP supports it.
 					--  This will expand snippets if the LSP sent a snippet.
-					["<C-y>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
 
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
