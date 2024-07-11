@@ -14,8 +14,8 @@ vim.opt.shiftwidth = 4
 vim.opt.wrap = true
 
 -- Make line numbers default
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.number = false
+vim.opt.relativenumber = false
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
@@ -180,11 +180,21 @@ require("lazy").setup({
 		config = function()
 			require("tokyonight").setup({
 				style = "night",
-				transparent = true,
+				transparent = false,
 				styles = {
 					keywords = { italic = false },
 					types = { italic = true },
 				},
+				on_highlights = function(hl, c)
+					hl.Comment = {
+						bg = c.bg_dark,
+						fg = c.yellow,
+					}
+					hl.TelescopePromptBorder = {
+						bg = c.bg_dark,
+						fg = c.blue1,
+					}
+				end,
 			})
 			vim.cmd.colorscheme("tokyonight")
 			-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -208,7 +218,6 @@ require("lazy").setup({
 		},
 	},
 
-	-- zen mode
 	{
 		"folke/zen-mode.nvim",
 		opts = {
@@ -257,22 +266,22 @@ require("lazy").setup({
 	},
 
 	-- Useful plugin to show you pending keybinds.
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy", -- Sets the loading event to 'VeryLazy'
-		config = function() -- This is the function that runs, AFTER loading
-			require("which-key").setup()
-
-			-- Document existing key chains
-			require("which-key").register({
-				["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
-				["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
-				["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
-				["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
-				["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
-			})
-		end,
-	},
+	-- {
+	-- 	"folke/which-key.nvim",
+	-- 	event = "VeryLazy", -- Sets the loading event to 'VeryLazy'
+	-- 	config = function() -- This is the function that runs, AFTER loading
+	-- 		require("which-key").setup()
+	--
+	-- 		-- Document existing key chains
+	-- 		require("which-key").register({
+	-- 			["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
+	-- 			["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
+	-- 			["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
+	-- 			["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
+	-- 			["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- Fuzzy Finder (files, lsp, etc)
 	{
