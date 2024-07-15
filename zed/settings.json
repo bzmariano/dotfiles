@@ -7,27 +7,22 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "theme": "Tokyo Night",
   "vim_mode": true,
   "ui_font_size": 18,
   "buffer_font_size": 24,
   "buffer_font_family": "CodeNewRoman Nerd Font",
   "buffer_line_height": {
-    "custom": 1.2,
+    "custom": 1.2
   },
   "current_line_highlight": "gutter",
   "terminal": {
     "font_family": "CodeNewRoman Nerd Font"
-  },
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "Night Owl No Italics",
   },
   "autosave": "on_window_change",
   "scrollbar": {
     "show": "never"
   },
   "projects_online_by_default": false,
-  "vim_mode": true,
   "dock": ""
 }

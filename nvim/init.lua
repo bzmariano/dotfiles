@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- guicursor config
-vim.opt.gcr = "n-v-c-sm:block/blinkwait700-blinkoff400-blinkon250,i-ci-ve:hor50,r-cr-o:hor20"
+vim.opt.gcr = "n-v-c-sm:block/blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver50,r-cr-o:hor20"
 
 -- indentation space
 vim.opt.tabstop = 4
@@ -11,7 +11,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
 -- wrap end of the line
-vim.opt.wrap = true
+vim.opt.wrap = false
 
 -- Make line numbers default
 vim.opt.number = false
@@ -601,9 +601,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Highlight todo, notes, etc in comments
-	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
-
 	{
 		"stevearc/oil.nvim",
 		opts = {},
@@ -626,113 +623,55 @@ require("lazy").setup({
 		config = true,
 	},
 
-	{ -- Collection of various small independent plugins/modules
-		"echasnovski/mini.nvim",
-		config = function()
-			-- Better Around/Inside textobjects
-
-			-- Examples:
-			--  - va)  - [V]isually select [A]round [)]parenthen
-			--  - yinq - [Y]ank [I]nside [N]ext [']quote
-			--  - ci'  - [C]hange [I]nside [']quote
-			require("mini.ai").setup({ n_lines = 500 })
-
-			-- Add/delete/replace surroundings (brackets, quotes, etc.)
-			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-			-- - sd'   - [S]urround [D]elete [']quotes
-			-- - sr)'  - [S]urround [R]eplace [)] [']
-			require("mini.surround").setup()
-
-			-- Simple and easy statusline.
-			--  You could remove this setup call if you don't like it,
-			--  and try some other statusline plugin
-			-- require("mini.statusline").setup()
-
-			-- Simple and easy tabline.
-			--  You could remove this setup call if you don't like it,
-			--  and try some other tabline plugin
-			--require("mini.tabline").setup({ set_vim_settings = true })
-
-			-- ... and there is more!
-			--  Check out: https://github.com/echasnovski/mini.nvim
-		end,
-	},
-
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufRead", "BufWrite" },
 		build = ":TSUpdate",
 		config = function()
-			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-
 			---@diagnostic disable-next-line: missing-fields
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = { "bash", "c", "lua", "markdown", "vim", "vimdoc" },
-				-- Autoinstall languages that are not installed
 				auto_install = true,
 				highlight = { enable = true },
 				indent = { enable = true },
 			})
-
-			-- There are additional nvim-treesitter modules that you can use to interact
-			-- with nvim-treesitter. You should go explore a few and see what interests you:
-			--
-			--    - Incremental selection: Included, see :help nvim-treesitter-incremental-selection-mod
-			--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-			--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 		end,
 	},
 
 	{
-		"folke/tokyonight.nvim",
-		lazy = false,
+		"olimorris/onedarkpro.nvim",
 		priority = 1000,
 		config = function()
-			require("tokyonight").setup({
-				style = "storm",
-				transparent = true,
-				styles = {
-					keywords = { italic = false },
-					types = { italic = true },
+			require("onedarkpro").setup({
+				colors = {}, -- Override default colors or create your own
+				highlights = {}, -- Override default highlight groups or create your own
+				styles = { -- For example, to apply bold and italic, use "bold,italic"
+					types = "italic", -- Style that is applied to types
+					methods = "NONE", -- Style that is applied to methods
+					numbers = "NONE", -- Style that is applied to numbers
+					strings = "NONE", -- Style that is applied to strings
+					comments = "bold,italic", -- Style that is applied to comments
+					keywords = "NONE", -- Style that is applied to keywords
+					constants = "NONE", -- Style that is applied to constants
+					functions = "NONE", -- Style that is applied to functions
+					operators = "NONE", -- Style that is applied to operators
+					variables = "NONE", -- Style that is applied to variables
+					parameters = "NONE", -- Style that is applied to parameters
+					conditionals = "NONE", -- Style that is applied to conditionals
+					virtual_text = "italic", -- Style that is applied to virtual text
 				},
-				on_highlights = function(hl, c)
-					hl.Comment = {
-						bg = nil,
-						fg = c.yellow,
-					}
-					hl.TelescopeNormal = {
-						bg = nil,
-						fg = c.white,
-					}
-					hl.TelescopeBorder = {
-						bg = nil,
-						fg = c.blue1,
-					}
-					hl.TelescopePromptBorder = {
-						bg = nil,
-						fg = c.blue1,
-					}
-					hl.TelescopePromptTitle = {
-						bg = nil,
-						fg = c.blue1,
-					}
-					hl.NormalFloat = {
-						bg = nil,
-						fg = c.blue1,
-					}
-					hl.FloatBorder = {
-						bg = nil,
-						fg = c.blue1,
-					}
-				end,
+				options = {
+					transparency = true,
+				},
 			})
-			vim.cmd.colorscheme("tokyonight")
-			-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-			-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-			-- vim.cmd("highlight LineNr guibg=NONE ctermbg=NONE")
-			-- vim.cmd("highlight SignColumn guibg=NONE ctermbg=NONE")
+			vim.cmd.colorscheme("onedark")
 		end,
+	},
+
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = { signs = false },
 	},
 
 	{
@@ -742,7 +681,7 @@ require("lazy").setup({
 		opts = {},
 		keys = {
 			{
-				"f",
+				"s",
 				mode = { "n", "x", "o" },
 				function()
 					require("flash").jump({
@@ -780,7 +719,7 @@ require("lazy").setup({
 				desc = "Flash Treesitter Search",
 			},
 			{
-				"<c-s>",
+				"<C-s>",
 				mode = { "c" },
 				function()
 					require("flash").toggle()
