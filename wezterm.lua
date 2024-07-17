@@ -2,10 +2,15 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
+-- Session domains for multiplexing
+config.unix_domains = { {
+	name = "unix",
+} }
+config.default_gui_startup_args = { "connect", "unix" }
+
 -- COLORSCHEME
-config.color_scheme = "tokyonight"
 local fg = "silver"
-local bg = "#101515"
+local bg = "#101215"
 config.colors = {
 	foreground = fg,
 	background = bg,
@@ -28,13 +33,10 @@ config.colors = {
 		},
 	},
 }
-
---config.font = wezterm.font("GeistMono Nerd Font", { weight = "Light" })
--- config.font = wezterm.font("CaskaydiaCove Nerd Font", { weight = "Light" })
-config.font = wezterm.font("CodeNewRoman Nerd Font", { weight = "Regular" })
-config.font_size = 18
-config.initial_rows = 40
-config.initial_cols = 120
+config.font = wezterm.font("JetBrains Mono Nerd Font", { weight = "Regular" })
+config.font_size = 14
+config.initial_rows = 30
+config.initial_cols = 100
 config.window_decorations = "NONE"
 config.audible_bell = "Disabled"
 config.hide_tab_bar_if_only_one_tab = true
