@@ -2,13 +2,7 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
--- Session domains for multiplexing
-config.unix_domains = { {
-	name = "unix",
-} }
-config.default_gui_startup_args = { "connect", "unix" }
-
--- COLORSCHEME
+-- STYLE
 local fg = "silver"
 local bg = "#101215"
 config.colors = {
@@ -33,6 +27,7 @@ config.colors = {
 		},
 	},
 }
+
 config.font = wezterm.font("JetBrains Mono Nerd Font", { weight = "Regular" })
 config.font_size = 14
 config.initial_rows = 30
@@ -40,5 +35,39 @@ config.initial_cols = 100
 config.window_decorations = "NONE"
 config.audible_bell = "Disabled"
 config.hide_tab_bar_if_only_one_tab = true
+
+-- KEYBINDINGS
+config.keys = {
+	{
+		key = "-",
+		mods = "CTRL",
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "|",
+		mods = "CTRL",
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "h",
+		mods = "CTRL",
+		action = wezterm.action.ActivatePaneDirection("Left"),
+	},
+	{
+		key = "j",
+		mods = "CTRL",
+		action = wezterm.action.ActivatePaneDirection("Down"),
+	},
+	{
+		key = "k",
+		mods = "CTRL",
+		action = wezterm.action.ActivatePaneDirection("Up"),
+	},
+	{
+		key = "l",
+		mods = "CTRL",
+		action = wezterm.action.ActivatePaneDirection("Right"),
+	},
+}
 
 return config
