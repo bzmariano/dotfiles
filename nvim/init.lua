@@ -602,6 +602,13 @@ require("lazy").setup({
 	},
 
 	{
+		"jmsegrev/lsp_lines.nvim",
+		config = function()
+			require("lsp_lines").setup()
+		end,
+	},
+
+	{
 		"stevearc/oil.nvim",
 		opts = {},
 		dependencies = { "nvim-tree/nvim-web-devicons" },

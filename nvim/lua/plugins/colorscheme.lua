@@ -21,7 +21,7 @@ local onedark = {
 				virtual_text = "italic", -- Style that is applied to virtual text
 			},
 			options = {
-				transparency = false,
+				transparency = true,
 			},
 		})
 		vim.cmd.colorscheme("onedark_dark")
@@ -60,6 +60,6 @@ local nightfox = {
 }
 
 return {
-	nightfox,
-	--onedark,
+	--nightfox,
+	onedark,
 }
