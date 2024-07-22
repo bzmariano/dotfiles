@@ -2,6 +2,16 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- colorscheme
+local Visual_color = "#660044"
+local NormalFloat_color = "#202020"
+vim.cmd.colorscheme("habamax")
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "Whitespace", { bg = "none" })
+vim.api.nvim_set_hl(0, "Visual", { bg = Visual_color })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+
 -- guicursor config
 vim.opt.gcr = "n-v-c-sm:block/blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver50,r-cr-o:hor20"
 
@@ -601,12 +611,12 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"jmsegrev/lsp_lines.nvim",
-		config = function()
-			require("lsp_lines").setup()
-		end,
-	},
+	-- {
+	-- 	"jmsegrev/lsp_lines.nvim",
+	-- 	config = function()
+	-- 		require("lsp_lines").setup()
+	-- 	end,
+	-- },
 
 	{
 		"stevearc/oil.nvim",

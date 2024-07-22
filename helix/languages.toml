@@ -2,6 +2,16 @@
 name = "go"
 auto-format = true
 formatter = { command = "goimports" }
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "typescript"
+auto-format = true
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "rust"
+indent = { tab-width = 4, unit = "    " }
 
 [language-server.rust-analyzer.config.check]
 command = "clippy"
