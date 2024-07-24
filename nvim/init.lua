@@ -591,6 +591,7 @@ require("lazy").setup({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
+					{ name = "conjure" },
 				},
 
 				window = {
@@ -641,6 +642,19 @@ require("lazy").setup({
 				auto_install = true,
 				highlight = { enable = true },
 				indent = { enable = true },
+			})
+		end,
+	},
+
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		config = function()
+			require("ibl").setup({
+				-- character = "▏"
+				-- character = "·"
+				indent = { char = "╎" },
+				scope = { enabled = false },
 			})
 		end,
 	},

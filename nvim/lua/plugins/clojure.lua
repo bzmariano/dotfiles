@@ -7,7 +7,7 @@ local rainbow_delimiters = {
 local parinfer = {
 	"gpanders/nvim-parinfer",
 	lazy = false,
-	-- ft = { "edn", "clj", "cljc" },
+	ft = { "edn", "clj", "cljc" },
 }
 
 local vim_jack_in = {
