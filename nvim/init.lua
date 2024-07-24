@@ -2,24 +2,13 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- -- colorscheme
--- local Visual_color = "#446688"
--- vim.cmd.colorscheme("desert")
--- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "Whitespace", { bg = "none" })
--- vim.api.nvim_set_hl(0, "MatchParen", { fg = "red" })
--- vim.api.nvim_set_hl(0, "Visual", { bg = Visual_color })
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
--- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
--- vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
-
 -- guicursor config
 vim.opt.gcr = "n-v-c-sm:block/blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver50,r-cr-o:hor20"
 
 -- indentation space
-vim.opt.tabstop = 8
-vim.opt.softtabstop = 8
-vim.opt.shiftwidth = 8
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
 -- wrap end of the line
 vim.opt.wrap = false
