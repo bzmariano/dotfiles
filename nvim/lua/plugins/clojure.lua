@@ -105,14 +105,12 @@ local conjure = {
 		vim.g["conjure#log#jump_to_latest#enabled"] = true
 		vim.g["conjure#log#break_length"] = 20
 		vim.g["conjure#client_on_load"] = false
-		-- vim.g["conjure#log#fold#enabled"] = true
-		-- vim.g["conjure#log#fold#lines"] = 30
 	end,
 }
 
 return {
 	parinfer,
 	conjure,
-	--rainbow_delimiters,
+	rainbow_delimiters,
 	--vim_jack_in,
 }

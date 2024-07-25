@@ -6,6 +6,18 @@
 -- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
 
+local alabaster = {
+	"p00f/alabaster.nvim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		vim.cmd.colorscheme("alabaster")
+		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+		vim.api.nvim_set_hl(0, "FloatBorder", { fg = "white", bg = "none" })
+		vim.api.nvim_set_hl(0, "@constant.macro", { fg = "#44aacc", bg = "none" })
+	end,
+}
+
 local ayu = {
 	"Shatur/neovim-ayu",
 	lazy = false,
@@ -26,6 +38,7 @@ local ayu = {
 				Special = { fg = "white" },
 				FloatBorder = { fg = "none" },
 				TelescopePromptBorder = { fg = "white" },
+				Comment = { fg = "#88ddff" },
 			},
 		})
 		vim.cmd.colorscheme("ayu")
@@ -95,7 +108,8 @@ local tokyonight = {
 }
 
 return {
+	alabaster,
 	--onedark,
-	ayu,
+	--ayu,
 	--tokyonight,
 }
