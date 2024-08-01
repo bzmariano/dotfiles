@@ -7,17 +7,7 @@ local rainbow_delimiters = {
 local parinfer = {
 	"gpanders/nvim-parinfer",
 	lazy = false,
-	ft = { "edn", "clj", "cljc" },
-}
-
-local vim_jack_in = {
-	"clojure-vim/vim-jack-in",
-	ft = { "edn", "clj", "cljc" },
-	event = "VeryLazy",
-	dependencies = {
-		"tpope/vim-dispatch",
-		"radenling/vim-dispatch-neovim",
-	},
+	-- ft = { "lisp", "edn", "clj", "cljc" },
 }
 
 local conjure = {
@@ -43,7 +33,7 @@ local conjure = {
 			end,
 		},
 	},
-	config = function(_, opts)
+	config = function(_, _)
 		require("conjure.main").main()
 		require("conjure.mapping")["on-filetype"]()
 
@@ -51,7 +41,7 @@ local conjure = {
 			group = vim.api.nvim_create_augroup("conjure_log_disable_lsp", { clear = true }),
 			pattern = { "conjure-log-*" },
 			callback = function()
-				vim.diagnostic.disable(0)
+				vim.diagnostic.enable(false)
 			end,
 			desc = "Conjure Log disable LSP diagnostics",
 		})
@@ -108,9 +98,16 @@ local conjure = {
 	end,
 }
 
+local nvlime = {
+	"monkoose/nvlime",
+	dependencies = { "monkoose/parsley" },
+	lazy = false,
+	ft = { "lisp" },
+}
+
 return {
-	parinfer,
-	conjure,
+	-- parinfer,
+	-- conjure,
 	rainbow_delimiters,
-	--vim_jack_in,
+	-- nvlime,
 }

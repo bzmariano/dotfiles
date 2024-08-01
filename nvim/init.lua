@@ -592,6 +592,7 @@ require("lazy").setup({
 					{ name = "luasnip" },
 					{ name = "path" },
 					{ name = "conjure" },
+					{ name = "nvlime" },
 				},
 
 				window = {
