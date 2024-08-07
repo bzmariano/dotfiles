@@ -15,7 +15,8 @@ local alabaster = {
 		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-		vim.api.nvim_set_hl(0, "@type.builtin", { fg = "#aa88cc", bg = "none" })
+		vim.api.nvim_set_hl(0, "@type.builtin", { fg = "#aa88ff", bg = "none" })
+		vim.api.nvim_set_hl(0, "@keyword", { fg = "#aa88ff", bg = "none" })
 	end,
 }
 
@@ -36,7 +37,7 @@ local kanagawa = {
 			terminalColors = true, -- define vim.g.terminal_color_{0,17}
 			colors = { -- add/modify theme and palette colors
 				palette = {},
-				theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+				theme = { wave = {}, lotus = {}, dragon = {}, all = { ui = { bg_gutter = "none" } } },
 			},
 			overrides = function(colors) -- add/modify highlights
 				return {}
@@ -50,6 +51,8 @@ local kanagawa = {
 
 		-- setup must be called before loading
 		vim.cmd("colorscheme kanagawa")
+		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
 	end,
 }
 

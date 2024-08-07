@@ -106,8 +106,8 @@ local nvlime = {
 }
 
 return {
-	-- parinfer,
-	-- conjure,
+	parinfer,
+	conjure,
 	rainbow_delimiters,
 	-- nvlime,
 }
