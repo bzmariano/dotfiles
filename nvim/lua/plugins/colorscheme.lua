@@ -14,26 +14,12 @@ local alabaster = {
 		vim.cmd.colorscheme("alabaster")
 		vim.api.nvim_set_hl(0, "Normal", { fg = "white", bg = "none" })
 		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-		vim.api.nvim_set_hl(0, "Whitespace", { fg = "#202020" })
-	end,
-}
-
-local onedark = {
-	"navarasu/onedark.nvim",
-	lazy = false,
-	priority = 1000,
-	config = function()
-		require("onedark").setup({
-			transparent = true,
-		})
-		require("onedark").load()
-		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+		vim.api.nvim_set_hl(0, "FloatBorder", { fg = "white" })
+		vim.api.nvim_set_hl(0, "Whitespace", { fg = "#252525" })
+		vim.api.nvim_set_hl(0, "@keyword", { fg = "#888888" })
 	end,
 }
 
 return {
 	alabaster,
-	--onedark,
 }

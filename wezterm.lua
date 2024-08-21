@@ -2,9 +2,11 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
+config.color_scheme = "Batman"
+
 -- STYLE
-local fg = "silver"
-local bg = "#101012"
+local fg = "white"
+local bg = "black"
 config.colors = {
 	foreground = fg,
 	background = bg,
@@ -28,12 +30,11 @@ config.colors = {
 	},
 }
 
-config.font = wezterm.font("FiraCode Nerd Font Mono", { weight = "Regular" })
---config.font = wezterm.font("Iosevka Nerd Font", { weight = "Regular" })
-config.font_size = 16
-config.initial_rows = 40
-config.initial_cols = 120
---config.dpi = 200
+--config.font = wezterm.font("IosevkaTerm Nerd Font Mono", { weight = "Regular" })
+config.font = wezterm.font("CodeNewRoman Nerd Font Mono", { weight = "Regular" })
+config.font_size = 17
+config.initial_rows = 28
+config.initial_cols = 100
 config.window_decorations = "NONE"
 config.audible_bell = "Disabled"
 config.hide_tab_bar_if_only_one_tab = true
