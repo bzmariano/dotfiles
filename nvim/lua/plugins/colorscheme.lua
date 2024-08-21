@@ -16,7 +16,8 @@ local alabaster = {
 		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 		vim.api.nvim_set_hl(0, "FloatBorder", { fg = "white" })
 		vim.api.nvim_set_hl(0, "Whitespace", { fg = "#252525" })
-		vim.api.nvim_set_hl(0, "@keyword", { fg = "#888888" })
+		vim.api.nvim_set_hl(0, "@comment", { fg = "#ccaa44" })
+		vim.api.nvim_set_hl(0, "@keyword", { fg = "#cccc44" })
 	end,
 }
 
