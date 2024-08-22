@@ -30,8 +30,7 @@ config.colors = {
 	},
 }
 
---config.font = wezterm.font("CodeNewRoman Nerd Font Mono", { weight = "Regular" })
-config.font = wezterm.font("UbuntuSansMono Nerd Font", { weight = "Regular" })
+config.font = wezterm.font("Ubuntu Sans Mono", { weight = "Regular" })
 config.font_size = 17
 config.initial_rows = 40
 config.initial_cols = 120
