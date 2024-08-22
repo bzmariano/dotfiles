@@ -30,14 +30,15 @@ config.colors = {
 	},
 }
 
---config.font = wezterm.font("IosevkaTerm Nerd Font Mono", { weight = "Regular" })
-config.font = wezterm.font("CodeNewRoman Nerd Font Mono", { weight = "Regular" })
+--config.font = wezterm.font("CodeNewRoman Nerd Font Mono", { weight = "Regular" })
+config.font = wezterm.font("UbuntuSansMono Nerd Font", { weight = "Regular" })
 config.font_size = 17
-config.initial_rows = 28
-config.initial_cols = 100
+config.initial_rows = 40
+config.initial_cols = 120
 config.window_decorations = "NONE"
 config.audible_bell = "Disabled"
 config.hide_tab_bar_if_only_one_tab = true
+config.tab_bar_at_bottom = true
 
 -- KEYBINDINGS
 config.keys = {
@@ -70,6 +71,11 @@ config.keys = {
 		key = "l",
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.ActivatePaneDirection("Right"),
+	},
+	{
+		key = "z",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.TogglePaneZoomState,
 	},
 }
 

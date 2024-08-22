@@ -6,6 +6,18 @@
 -- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
 
+local colorbuddy = {
+	"tjdevries/colorbuddy.nvim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		vim.cmd.colorscheme("gruvbuddy")
+		vim.api.nvim_set_hl(0, "WhiteSpace", { fg = "#252525" })
+		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+		vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+	end,
+}
+
 local alabaster = {
 	"p00f/alabaster.nvim",
 	lazy = false,
@@ -22,5 +34,6 @@ local alabaster = {
 }
 
 return {
-	alabaster,
+	colorbuddy,
+	--alabaster,
 }
