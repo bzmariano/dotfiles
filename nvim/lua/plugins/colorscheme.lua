@@ -18,6 +18,16 @@ local colorbuddy = {
 	end,
 }
 
+local onedark = {
+	"joshdick/onedark.vim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		vim.cmd.colorscheme("onedark")
+		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	end,
+}
+
 local alabaster = {
 	"p00f/alabaster.nvim",
 	lazy = false,
@@ -35,6 +45,7 @@ local alabaster = {
 }
 
 return {
-	colorbuddy,
+	onedark,
+	--colorbuddy,
 	--alabaster,
 }
