@@ -2,8 +2,6 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.color_scheme = "Batman"
-
 -- STYLE
 local fg = "white"
 local bg = "black"
@@ -33,8 +31,8 @@ config.colors = {
 	},
 }
 
-config.font = wezterm.font("Ubuntu Sans Mono", { weight = "Regular" })
-config.font_size = 17
+config.font = wezterm.font("RobotoMono Nerd Font", { weight = "Regular" })
+config.font_size = 14
 config.initial_rows = 40
 config.initial_cols = 120
 config.window_decorations = "NONE"
