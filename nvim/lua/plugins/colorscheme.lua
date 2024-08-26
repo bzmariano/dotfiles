@@ -12,9 +12,30 @@ local colorbuddy = {
 	priority = 1000,
 	config = function()
 		vim.cmd.colorscheme("gruvbuddy")
-		vim.api.nvim_set_hl(0, "WhiteSpace", { fg = "#252525" })
-		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-		vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+	end,
+}
+
+local ayu = {
+	"Shatur/neovim-ayu",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		require("ayu").setup({
+			mirage = false,
+			terminal = true,
+			overrides = {
+				Normal = { bg = "None" },
+				ColorColumn = { bg = "None" },
+				SignColumn = { bg = "None" },
+				Folded = { bg = "None" },
+				FoldColumn = { bg = "None" },
+				CursorLine = { bg = "None" },
+				CursorColumn = { bg = "None" },
+				WhichKeyFloat = { bg = "None" },
+				VertSplit = { bg = "None" },
+			},
+		})
+		vim.cmd.colorscheme("ayu")
 	end,
 }
 
@@ -38,14 +59,51 @@ local alabaster = {
 		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 		vim.api.nvim_set_hl(0, "FloatBorder", { fg = "white" })
 		vim.api.nvim_set_hl(0, "Whitespace", { fg = "#252525" })
-		vim.api.nvim_set_hl(0, "@comment", { fg = "#cfaa44" })
-		vim.api.nvim_set_hl(0, "@keyword", { fg = "#999999" })
-		vim.api.nvim_set_hl(0, "@keyword.func", { fg = "#999999" })
+	end,
+}
+
+local tokyonight = {
+	"folke/tokyonight.nvim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		require("tokyonight").setup({
+			style = "night",
+			transparent = false,
+			styles = {
+				comments = { italic = true },
+				keywords = { italic = false },
+				functions = {},
+				variables = {},
+				sidebars = "dark",
+				floats = "dark",
+			},
+		})
+		vim.cmd.colorscheme("tokyonight")
+	end,
+}
+
+local rosepine = {
+	"rose-pine/neovim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		require("rose-pine").setup({
+			styles = {
+				bold = false,
+				italic = false,
+				transparency = true,
+			},
+		})
+		vim.cmd.colorscheme("rose-pine")
 	end,
 }
 
 return {
-	onedark,
-	--colorbuddy,
-	--alabaster,
+	rosepine,
+	-- colorbuddy,
+	-- onedark,
+	-- alabaster,
+	-- ayu,
+	-- tokyonight,
 }

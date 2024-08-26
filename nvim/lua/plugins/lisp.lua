@@ -1,5 +1,6 @@
 local rainbow_delimiters = {
 	"HiPhish/rainbow-delimiters.nvim",
+	ft = { "lisp", "edn", "clj", "cljc" },
 	lazy = false,
 }
 
@@ -127,7 +128,7 @@ local conjure = {
 		vim.g[keys .. "#eval_current_form"] = "ee"
 		vim.g[keys .. "#eval_root_form"] = "er"
 		vim.g[keys .. "#eval_buf"] = "eb"
-		vim.g[keys .. "#eval_comment_root_form"] = "ecr"
+		vim.g[keys .. "#eval_comment_root_form"] = "ep"
 		vim.keymap.set("n", "<leader>ce", "<CMD>ConjureEval *e<CR>", { desc = "[C]onjure eval: *[e]" })
 		vim.keymap.set(
 			"n",
@@ -138,7 +139,7 @@ local conjure = {
 		vim.g["conjure#highlight#enabled"] = true
 		vim.g["conjure#highlight#timeout"] = 200
 		vim.g["conjure#log#wrap"] = true
-		vim.g["conjure#log#hud#enabled"] = true
+		vim.g["conjure#log#hud#enabled"] = false
 		vim.g["conjure#log#jump_to_latest#enabled"] = true
 		vim.g["conjure#log#break_length"] = 20
 		vim.g["conjure#client_on_load"] = false
@@ -146,8 +147,8 @@ local conjure = {
 }
 
 return {
-	-- rainbow_delimiters,
-	-- conjure,
-	-- parinfer,
-	-- sexp,
+	--rainbow_delimiters,
+	conjure,
+	parinfer,
+	sexp,
 }
