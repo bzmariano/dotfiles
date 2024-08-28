@@ -31,7 +31,7 @@ vim.diagnostic.config({ virtual_text = false })
 vim.opt.showmode = false
 
 -- Don't show status line
-vim.opt.laststatus = 0
+-- vim.opt.laststatus = 0
 
 -- Sync clipboard between OS and Neovim.
 -- See `:help 'clipboard'`
@@ -664,6 +664,25 @@ require("lazy").setup({
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
+	},
+
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			options = {
+				section_separators = "",
+				component_separators = "",
+			},
+			sections = {
+				lualine_a = {},
+				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_c = { "filename" },
+				lualine_x = { "fileformat", "filetype" },
+				lualine_y = { "progress" },
+				lualine_z = {},
+			},
+		},
 	},
 
 	{
