@@ -33,7 +33,7 @@ config.colors = {
 	},
 }
 
-config.font = wezterm.font("FiraCode Nerd Font Mono", { weight = "Regular" })
+config.font = wezterm.font("FiraCode Nerd Font Mono", { weight = "Light" })
 config.font_size = 14
 config.initial_rows = 40
 config.initial_cols = 120
@@ -44,7 +44,7 @@ config.tab_bar_at_bottom = true
 config.foreground_text_hsb = {
 	hue = 1.0,
 	saturation = 1.1,
-	brightness = 1.2,
+	brightness = 1.5,
 }
 
 -- KEYBINDINGS
