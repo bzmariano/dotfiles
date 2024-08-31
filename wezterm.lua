@@ -2,16 +2,16 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.color_scheme = "Alabaster"
+config.color_scheme = "Gruvbox dark, hard (base16)"
 
 -- STYLE
 local fg = "white"
-local bg = "070707"
+local bg = "#202020"
 config.colors = {
 	split = "white",
-	cursor_bg = "yellow",
-	cursor_fg = "black",
-	foreground = fg,
+	-- cursor_bg = "yellow",
+	-- cursor_fg = "black",
+	-- foreground = fg,
 	background = bg,
 	tab_bar = {
 		active_tab = {
@@ -33,17 +33,17 @@ config.colors = {
 	},
 }
 
-config.font = wezterm.font("FiraCode Nerd Font Mono", { weight = "Light" })
-config.font_size = 14
+config.font = wezterm.font("Noto Mono", { weight = "Regular" })
+config.font_size = 16
 config.initial_rows = 40
-config.initial_cols = 120
+config.initial_cols = 100
 config.window_decorations = "NONE"
 config.audible_bell = "Disabled"
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.foreground_text_hsb = {
 	hue = 1.0,
-	saturation = 1.1,
+	saturation = 1,
 	brightness = 1.5,
 }
 
