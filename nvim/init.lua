@@ -25,7 +25,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 -- Enable/disable diagnostic virtual text
-vim.diagnostic.config({ virtual_text = false })
+-- vim.diagnostic.config({ virtual_text = false })
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
