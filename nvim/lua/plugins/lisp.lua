@@ -147,7 +147,7 @@ local conjure = {
 }
 
 return {
-	-- rainbow_delimiters,
+	--rainbow_delimiters,
 	conjure,
 	parinfer,
 	sexp,

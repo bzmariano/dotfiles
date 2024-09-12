@@ -2,16 +2,12 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.color_scheme = "Gruvbox dark, hard (base16)"
-
 -- STYLE
 local fg = "white"
-local bg = "#202020"
+local bg = "black"
 config.colors = {
 	split = "white",
-	-- cursor_bg = "yellow",
-	-- cursor_fg = "black",
-	-- foreground = fg,
+	foreground = fg,
 	background = bg,
 	tab_bar = {
 		active_tab = {
@@ -33,55 +29,50 @@ config.colors = {
 	},
 }
 
-config.font = wezterm.font("Noto Mono", { weight = "Regular" })
-config.font_size = 16
-config.initial_rows = 40
-config.initial_cols = 100
+config.font = wezterm.font("RobotoMono Nerd Font", { weight = "Regular" })
+config.font_size = 12
+config.initial_rows = 25
+config.initial_cols = 80
 config.window_decorations = "NONE"
 config.audible_bell = "Disabled"
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
-config.foreground_text_hsb = {
-	hue = 1.0,
-	saturation = 1,
-	brightness = 1.5,
-}
 
 -- KEYBINDINGS
 config.keys = {
 	{
 		key = "-",
-		mods = "CTRL",
+		mods = "ALT",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		key = "|",
-		mods = "CTRL",
+		mods = "ALT",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		key = "h",
-		mods = "CTRL|SHIFT",
+		mods = "ALT",
 		action = wezterm.action.ActivatePaneDirection("Left"),
 	},
 	{
 		key = "j",
-		mods = "CTRL|SHIFT",
+		mods = "ALT",
 		action = wezterm.action.ActivatePaneDirection("Down"),
 	},
 	{
 		key = "k",
-		mods = "CTRL|SHIFT",
+		mods = "ALT",
 		action = wezterm.action.ActivatePaneDirection("Up"),
 	},
 	{
 		key = "l",
-		mods = "CTRL|SHIFT",
+		mods = "ALT",
 		action = wezterm.action.ActivatePaneDirection("Right"),
 	},
 	{
 		key = "z",
-		mods = "CTRL|SHIFT",
+		mods = "ALT",
 		action = wezterm.action.TogglePaneZoomState,
 	},
 }

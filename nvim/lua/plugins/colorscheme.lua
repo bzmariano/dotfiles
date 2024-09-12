@@ -8,13 +8,14 @@
 -- vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
 
-return {
+local base16 = {
 	"wincent/base16-nvim",
 	lazy = false, -- load at start
 	priority = 1000, -- load first
 	config = function()
-		vim.cmd([[colorscheme base16-tomorrow-night]])
 		--vim.cmd([[colorscheme base16-gruvbox-dark-medium]])
+		--vim.cmd([[colorscheme base16-onedark]])
+		vim.cmd([[colorscheme base16-tomorrow-night]])
 		vim.o.background = "dark"
 		-- XXX: hi Normal ctermbg=NONE
 		-- Make comments more prominent -- they are important.
@@ -38,4 +39,24 @@ return {
 		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 		vim.api.nvim_set_hl(0, "MatchParen", { fg = "yellow" })
 	end,
+}
+
+local colorbuddy = {
+	"tjdevries/colorbuddy.nvim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		vim.cmd.colorscheme("gruvbuddy")
+		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+		vim.api.nvim_set_hl(0, "Whitespace", { fg = "#404040", bg = "none" })
+		vim.api.nvim_set_hl(0, "LineNr", { fg = "#404040", bg = "none" })
+		vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+		vim.api.nvim_set_hl(0, "IblScope", { fg = "#404040", bg = "white" })
+		vim.api.nvim_set_hl(0, "Statusline", { bg = "none" })
+	end,
+}
+
+return {
+	--colorbuddy,
+	base16,
 }
