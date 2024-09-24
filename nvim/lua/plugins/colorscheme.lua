@@ -8,19 +8,18 @@
 -- vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
 
-local base16 = {
+return {
 	"wincent/base16-nvim",
 	lazy = false, -- load at start
 	priority = 1000, -- load first
 	config = function()
-		--vim.cmd([[colorscheme base16-gruvbox-dark-medium]])
-		--vim.cmd([[colorscheme base16-onedark]])
+		-- vim.cmd([[colorscheme base16-gruvbox-dark-hard]])
 		vim.cmd([[colorscheme base16-tomorrow-night]])
 		vim.o.background = "dark"
 		-- XXX: hi Normal ctermbg=NONE
 		-- Make comments more prominent -- they are important.
 		local bools = vim.api.nvim_get_hl(0, { name = "Boolean" })
-		--vim.api.nvim_set_hl(0, "Comment", bools)
+		vim.api.nvim_set_hl(0, "Comment", bools)
 		-- Make it clearly visible which argument we're at.
 		local marked = vim.api.nvim_get_hl(0, { name = "PMenu" })
 		vim.api.nvim_set_hl(
@@ -34,29 +33,10 @@ local base16 = {
 		-- call Base16hi("CocHintSign", g:base16_gui03, "", g:base16_cterm03, "", "", "")
 		vim.api.nvim_set_hl(0, "LineNr", { bg = "none", fg = "#404040" })
 		vim.api.nvim_set_hl(0, "Whitespace", { bg = "none", fg = "#404040" })
+		vim.api.nvim_set_hl(0, "Cursorline", { bg = "#000020" })
 		vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-		-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 		vim.api.nvim_set_hl(0, "MatchParen", { fg = "yellow" })
+		vim.api.nvim_set_hl(0, "Delimiter", { fg = "white" })
 	end,
-}
-
-local colorbuddy = {
-	"tjdevries/colorbuddy.nvim",
-	lazy = false,
-	priority = 1000,
-	config = function()
-		vim.cmd.colorscheme("gruvbuddy")
-		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-		vim.api.nvim_set_hl(0, "Whitespace", { fg = "#404040", bg = "none" })
-		vim.api.nvim_set_hl(0, "LineNr", { fg = "#404040", bg = "none" })
-		vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-		vim.api.nvim_set_hl(0, "IblScope", { fg = "#404040", bg = "white" })
-		vim.api.nvim_set_hl(0, "Statusline", { bg = "none" })
-	end,
-}
-
-return {
-	--colorbuddy,
-	base16,
 }

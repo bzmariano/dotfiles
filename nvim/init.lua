@@ -11,11 +11,11 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
 -- wrap end of the line
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 -- Make line numbers default
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
@@ -25,7 +25,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 -- Enable/disable diagnostic virtual text
--- vim.diagnostic.config({ virtual_text = false })
+vim.diagnostic.config({ virtual_text = false })
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
