@@ -8,12 +8,12 @@
 -- vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
 
-return {
+local base16 = {
 	"wincent/base16-nvim",
 	lazy = false, -- load at start
 	priority = 1000, -- load first
 	config = function()
-		-- vim.cmd([[colorscheme base16-gruvbox-dark-hard]])
+		--vim.cmd([[colorscheme base16-gruvbox-dark-hard]])
 		vim.cmd([[colorscheme base16-tomorrow-night]])
 		vim.o.background = "dark"
 		-- XXX: hi Normal ctermbg=NONE
@@ -33,10 +33,14 @@ return {
 		-- call Base16hi("CocHintSign", g:base16_gui03, "", g:base16_cterm03, "", "", "")
 		vim.api.nvim_set_hl(0, "LineNr", { bg = "none", fg = "#404040" })
 		vim.api.nvim_set_hl(0, "Whitespace", { bg = "none", fg = "#404040" })
-		vim.api.nvim_set_hl(0, "Cursorline", { bg = "#000020" })
+		vim.api.nvim_set_hl(0, "Cursorline", { bg = "#000040" })
 		vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-		vim.api.nvim_set_hl(0, "MatchParen", { fg = "yellow" })
-		vim.api.nvim_set_hl(0, "Delimiter", { fg = "white" })
+		vim.api.nvim_set_hl(0, "MatchParen", { fg = "red" })
+		vim.api.nvim_set_hl(0, "Delimiter", { fg = "gray" })
 	end,
+}
+
+return {
+	base16,
 }

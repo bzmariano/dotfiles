@@ -2,6 +2,14 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- colorscheme
+vim.cmd.colorscheme("torte")
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "white" })
+vim.api.nvim_set_hl(0, "Statusline", { bg = "none" })
+vim.api.nvim_set_hl(0, "Visual", { bg = "#202020" })
+vim.api.nvim_set_hl(0, "Cursorline", { bg = "#202020" })
+
 -- guicursor config
 vim.opt.gcr = "n-v-c-sm:block/blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver50,r-cr-o:hor20"
 
@@ -15,7 +23,7 @@ vim.opt.wrap = true
 
 -- Make line numbers default
 vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
@@ -25,7 +33,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 -- Enable/disable diagnostic virtual text
-vim.diagnostic.config({ virtual_text = false })
+vim.diagnostic.config({ virtual_text = true })
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
