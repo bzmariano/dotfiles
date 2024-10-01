@@ -2,14 +2,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- colorscheme
-vim.cmd.colorscheme("torte")
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "FloatBorder", { fg = "white" })
-vim.api.nvim_set_hl(0, "Statusline", { bg = "none" })
-vim.api.nvim_set_hl(0, "Visual", { bg = "#202020" })
-vim.api.nvim_set_hl(0, "Cursorline", { bg = "#202020" })
-
 -- guicursor config
 vim.opt.gcr = "n-v-c-sm:block/blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver50,r-cr-o:hor20"
 
@@ -88,22 +80,8 @@ vim.opt.scrolloff = 20
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- Terminal Buffer
-vim.keymap.set("n", "<leader>tn", "<CMD>tabnew<CR>", { desc = "[T]ab [N]ew" })
-
--- Terminal Buffer
-vim.keymap.set("n", "<leader>ti", function()
-	vim.cmd.tabnew()
-	vim.cmd.terminal()
-	vim.cmd.startinsert()
-end, { desc = "[T]erminal Buffer in [I]nsert mode" })
-
 -- close current buffer
 vim.keymap.set("n", "<leader>kb", ":bd!<CR>", { desc = "[K]ill current [B]uffer" })
-
--- move between tabs
-vim.keymap.set({ "n", "t" }, "<C-p>", "<CMD>tabprevious<CR>", { desc = "Move to previous tab" })
-vim.keymap.set({ "n", "t" }, "<C-n>", "<CMD>tabNext<CR>", { desc = "Move to next  tab" })
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -118,28 +96,6 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 vim.keymap.set("n", "<S-e>", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
--- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---  See `:help wincmd` for a list of all window commands
--- vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
--- vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
--- vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
--- vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-
 -- [[ Basic Autocommands ]]
 --  See :help lua-guide-autocommands
 
@@ -148,7 +104,7 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
 	end,
@@ -337,7 +293,7 @@ require("lazy").setup({
 			--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
 			--    function will be executed to configure the current buffer
 			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+				group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 				callback = function(event)
 					-- In this case, we create a function that lets us more easily define mappings specific
 					-- for LSP related items. It sets the mode, buffer and description for us each time.
@@ -611,13 +567,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- {
-	-- 	"jmsegrev/lsp_lines.nvim",
-	-- 	config = function()
-	-- 		require("lsp_lines").setup()
-	-- 	end,
-	-- },
-
 	{
 		"stevearc/oil.nvim",
 		opts = {},
@@ -634,12 +583,6 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = true,
-	},
-
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufRead", "BufWrite" },
@@ -651,19 +594,6 @@ require("lazy").setup({
 				auto_install = true,
 				highlight = { enable = true },
 				indent = { enable = true },
-			})
-		end,
-	},
-
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		config = function()
-			require("ibl").setup({
-				-- character = "▏"
-				-- character = "·"
-				indent = { char = "╎" },
-				scope = { enabled = false },
 			})
 		end,
 	},
@@ -693,70 +623,5 @@ require("lazy").setup({
 		},
 	},
 
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		---@type Flash.Config
-		opts = {},
-		keys = {
-			{
-				"s",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").jump({
-						search = {
-							mode = function(str)
-								return "\\<" .. str
-							end,
-						},
-					})
-				end,
-				desc = "Flash",
-			},
-			{
-				"S",
-				mode = { "n", "o", "x" },
-				function()
-					require("flash").treesitter()
-				end,
-				desc = "Flash Treesitter",
-			},
-			{
-				"r",
-				mode = "o",
-				function()
-					require("flash").remote()
-				end,
-				desc = "Remote Flash",
-			},
-			{
-				"R",
-				mode = { "o", "x" },
-				function()
-					require("flash").treesitter_search()
-				end,
-				desc = "Flash Treesitter Search",
-			},
-			{
-				"<C-s>",
-				mode = { "c" },
-				function()
-					require("flash").toggle()
-				end,
-				desc = "Toggle Flash Search",
-			},
-		},
-	},
-
 	{ import = "plugins" },
 })
-
--- Golang Macros
-function InsertIfErr()
-	vim.api.nvim_put({ "if err != nil {", "}" }, "l", true, true)
-	vim.cmd("normal! k==")
-	vim.cmd("normal! O")
-	vim.cmd("startinsert")
-end
-vim.api.nvim_set_keymap("n", "<leader>ei", ":lua InsertIfErr()<CR>", { noremap = true, silent = true })
---

@@ -10,14 +10,11 @@
 
 local base16 = {
 	"wincent/base16-nvim",
-	lazy = false, -- load at start
-	priority = 1000, -- load first
+	lazy = false,
+	priority = 1000,
 	config = function()
-		--vim.cmd([[colorscheme base16-gruvbox-dark-hard]])
-		vim.cmd([[colorscheme base16-tomorrow-night]])
 		vim.o.background = "dark"
-		-- XXX: hi Normal ctermbg=NONE
-		-- Make comments more prominent -- they are important.
+		vim.cmd.colorscheme("base16-tomorrow-night")
 		local bools = vim.api.nvim_get_hl(0, { name = "Boolean" })
 		vim.api.nvim_set_hl(0, "Comment", bools)
 		-- Make it clearly visible which argument we're at.
@@ -41,6 +38,30 @@ local base16 = {
 	end,
 }
 
+local mono = {
+	"kdheepak/monochrome.nvim",
+	config = function()
+		local green = "#66aa66"
+		local gray = "#999999"
+		local yellow = "#cccc66"
+		vim.cmd("colorscheme monochrome")
+		vim.api.nvim_set_hl(0, "Normal", { fg = gray })
+		vim.api.nvim_set_hl(0, "TSVariable", { fg = gray })
+		vim.api.nvim_set_hl(0, "Delimiter", { fg = gray })
+		vim.api.nvim_set_hl(0, "Comment", { fg = yellow })
+		vim.api.nvim_set_hl(0, "Operator", { fg = gray })
+		vim.api.nvim_set_hl(0, "@variable", { fg = gray })
+		vim.api.nvim_set_hl(0, "@function", { fg = gray })
+		vim.api.nvim_set_hl(0, "@keyword", { fg = "white" })
+		vim.api.nvim_set_hl(0, "@keyword.function", { fg = "white" })
+		vim.api.nvim_set_hl(0, "@string", { fg = green })
+		vim.api.nvim_set_hl(0, "@type", { fg = "white" })
+		vim.api.nvim_set_hl(0, "@type.builtin", { fg = "white" })
+		vim.api.nvim_set_hl(0, "@type.builtin", { fg = "white" })
+	end,
+}
+
 return {
-	base16,
+	mono,
+	--base16,
 }
