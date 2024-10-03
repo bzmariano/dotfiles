@@ -1,6 +1,5 @@
 return {
 	"ej-shafran/compile-mode.nvim",
-	tag = "v5.*",
 	-- you can just use the latest version:
 	-- branch = "latest",
 	-- or the most up-to-date updates:

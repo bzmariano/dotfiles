@@ -29,10 +29,9 @@ config.colors = {
 	},
 }
 
---config.font = wezterm.font("CaskaydiaCove Nerd Font", { weight = "Regular" })
---config.font = wezterm.font("FiraCode Nerd Font", { weight = "Regular" })
+--config.font = wezterm.font("Inconsolata Nerd Font", { weight = "Regular" })
 config.font = wezterm.font("Iosevka Nerd Font", { weight = "Regular" })
-config.font_size = 18
+config.font_size = 16
 config.initial_rows = 30
 config.initial_cols = 100
 config.window_decorations = "NONE"

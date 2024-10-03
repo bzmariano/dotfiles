@@ -17,7 +17,6 @@ local base16 = {
 		vim.cmd.colorscheme("base16-tomorrow-night")
 		local bools = vim.api.nvim_get_hl(0, { name = "Boolean" })
 		vim.api.nvim_set_hl(0, "Comment", bools)
-		-- Make it clearly visible which argument we're at.
 		local marked = vim.api.nvim_get_hl(0, { name = "PMenu" })
 		vim.api.nvim_set_hl(
 			0,
@@ -38,30 +37,57 @@ local base16 = {
 	end,
 }
 
-local mono = {
-	"kdheepak/monochrome.nvim",
+local kanagawa = {
+	"rebelot/kanagawa.nvim",
+	lazy = false,
+	priority = 1000,
 	config = function()
-		local green = "#66aa66"
-		local gray = "#999999"
-		local yellow = "#cccc66"
-		vim.cmd("colorscheme monochrome")
-		vim.api.nvim_set_hl(0, "Normal", { fg = gray })
-		vim.api.nvim_set_hl(0, "TSVariable", { fg = gray })
-		vim.api.nvim_set_hl(0, "Delimiter", { fg = gray })
-		vim.api.nvim_set_hl(0, "Comment", { fg = yellow })
-		vim.api.nvim_set_hl(0, "Operator", { fg = gray })
-		vim.api.nvim_set_hl(0, "@variable", { fg = gray })
-		vim.api.nvim_set_hl(0, "@function", { fg = gray })
-		vim.api.nvim_set_hl(0, "@keyword", { fg = "white" })
-		vim.api.nvim_set_hl(0, "@keyword.function", { fg = "white" })
-		vim.api.nvim_set_hl(0, "@string", { fg = green })
-		vim.api.nvim_set_hl(0, "@type", { fg = "white" })
-		vim.api.nvim_set_hl(0, "@type.builtin", { fg = "white" })
-		vim.api.nvim_set_hl(0, "@type.builtin", { fg = "white" })
+		require("kanagawa").setup({
+			compile = true,
+			undercurl = true,
+			commentStyle = { italic = true },
+			functionStyle = {},
+			keywordStyle = { italic = false },
+			statementStyle = { bold = false },
+			typeStyle = { italic = true },
+			transparent = true,
+			dimInactive = false,
+			terminalColors = true,
+			colors = {
+				palette = {},
+				theme = { wave = {}, lotus = {}, dragon = {}, all = {
+					ui = { bg_gutter = "none" },
+				} },
+			},
+			overrides = function(colors)
+				return {
+					Function = { fg = colors.palette.carpYellow },
+				}
+			end,
+			theme = "wave",
+			background = {
+				dark = "dragon",
+				light = "lotus",
+			},
+		})
+		vim.cmd("colorscheme kanagawa")
+		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+		vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
+	end,
+}
+
+local colorbuddy = {
+	"tjdevries/colorbuddy.nvim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		require("colorbuddy").colorscheme("bzm")
+		vim.cmd.colorscheme("bzm")
 	end,
 }
 
 return {
-	mono,
+	colorbuddy,
 	--base16,
+	--kanagawa,
 }

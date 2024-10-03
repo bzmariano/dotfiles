@@ -10,6 +10,9 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
+-- re-execute the last command
+vim.api.nvim_set_keymap("n", "<leader>r", [[:<Up><CR>]], { noremap = true, silent = false })
+
 -- wrap end of the line
 vim.opt.wrap = true
 
@@ -621,6 +624,12 @@ require("lazy").setup({
 				lualine_z = {},
 			},
 		},
+	},
+
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
 	},
 
 	{ import = "plugins" },
