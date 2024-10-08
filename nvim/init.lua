@@ -443,12 +443,12 @@ require("lazy").setup({
 					end,
 				},
 			})
-			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-				border = "single",
-			})
-			vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signatureHelp, {
-				border = "single",
-			})
+			-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border
+			-- 	border = "single",
+			-- })
+			-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signatureHelp, {
+			-- 	border = "single",
+			-- })
 		end,
 	},
 
@@ -515,8 +515,10 @@ require("lazy").setup({
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				--completion = { completeopt = "menu,menuone,preview,noselect" },
-				completion = { completeopt = "menu,menuone,preview,noselect" },
+
+				completion = {
+					completeopt = "menu,menuone,noselect",
+				},
 
 				-- For an understanding of why these mappings were
 				-- chosen, you will need to read `:help ins-completion`
@@ -562,10 +564,10 @@ require("lazy").setup({
 					{ name = "nvlime" },
 				},
 
-				window = {
-					completion = cmp.config.window.bordered(winhighlight),
-					documentation = cmp.config.window.bordered(winhighlight),
-				},
+				-- window = {
+				-- 	completion = cmp.config.window.bordered(winhighlight),
+				-- 	documentation = cmp.config.window.bordered(winhighlight),
+				-- },
 			})
 		end,
 	},
@@ -586,7 +588,8 @@ require("lazy").setup({
 		end,
 	},
 
-	{ -- Highlight, edit, and navigate code
+	-- Highlight, edit, and navigate code
+	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufRead", "BufWrite" },
 		build = ":TSUpdate",
